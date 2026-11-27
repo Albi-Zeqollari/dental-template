@@ -1,11 +1,12 @@
+import { Calculator } from './components/Calculator';
 import { Contact } from './components/Contact';
 import { DemoBanner } from './components/Demo';
 import { Faq } from './components/Faq';
 import { Footer } from './components/Footer';
+import { Gallery } from './components/Gallery';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { HowItWorks } from './components/HowItWorks';
-import { PriceTable } from './components/PriceTable';
 import { Results } from './components/Results';
 import { Reviews } from './components/Reviews';
 import { StickyActions } from './components/StickyActions';
@@ -23,9 +24,10 @@ export function App() {
       <main>
         <Hero />
         <Treatments />
-        <PriceTable />
+        <Calculator />
         <HowItWorks />
         <Results />
+        <Gallery />
         <Team />
         <WhyUs />
         <Reviews />

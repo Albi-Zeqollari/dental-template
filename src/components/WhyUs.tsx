@@ -1,5 +1,6 @@
 import type { MessageKey } from '../i18n';
 import { useLang } from '../lang';
+import { Reveal } from './Motion';
 import { CheckIcon } from './Icons';
 
 const REASONS: { title: MessageKey; desc: MessageKey }[] = [
@@ -14,10 +15,12 @@ export function WhyUs() {
   return (
     <section className="section section-tint" id="why">
       <div className="container">
-        <h2>{t('why.title')}</h2>
+        <Reveal>
+          <h2>{t('why.title')}</h2>
+        </Reveal>
         <ul className="why-grid">
-          {REASONS.map((r) => (
-            <li key={r.title} className="why-item">
+          {REASONS.map((r, i) => (
+            <Reveal as="li" key={r.title} delay={i * 90} className="why-item">
               <span className="check-badge">
                 <CheckIcon size={18} />
               </span>
@@ -25,7 +28,7 @@ export function WhyUs() {
                 <h3>{t(r.title)}</h3>
                 <p>{t(r.desc)}</p>
               </div>
-            </li>
+            </Reveal>
           ))}
         </ul>
       </div>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CLINIC } from '../config';
 import { whatsappUrl } from '../format';
+import { useScrolled, useScrollSpy } from '../hooks';
 import type { MessageKey } from '../i18n';
 import { useLang } from '../lang';
 import { MenuIcon, ToothIcon, WhatsAppIcon } from './Icons';
@@ -29,20 +30,33 @@ export function Logo({ href = '#top' }: { href?: string }) {
   );
 }
 
+const SECTION_IDS = NAV.map((item) => item.href.slice(1));
+
 export function Header() {
   const { t } = useLang();
   const [open, setOpen] = useState(false);
+  const active = useScrollSpy(SECTION_IDS);
+  const scrolled = useScrolled();
 
   return (
-    <header className="site-header">
+    <header className={scrolled ? 'site-header is-scrolled' : 'site-header'}>
       <div className="container header-inner">
         <Logo />
         <nav id="site-nav" className={open ? 'nav open' : 'nav'} aria-label="Main">
-          {NAV.map((item) => (
-            <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
-              {t(item.key)}
-            </a>
-          ))}
+          {NAV.map((item) => {
+            const isActive = active === item.href.slice(1);
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className={isActive ? 'is-active' : undefined}
+                aria-current={isActive ? 'true' : undefined}
+                onClick={() => setOpen(false)}
+              >
+                {t(item.key)}
+              </a>
+            );
+          })}
         </nav>
         <div className="header-actions">
           <LanguageSwitcher />
