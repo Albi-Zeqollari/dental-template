@@ -1,5 +1,9 @@
 # Dental clinic website template (Tirana)
 
+**Live demo:** https://albi-zeqollari.github.io/dental-template/
+(also [?lang=en](https://albi-zeqollari.github.io/dental-template/?lang=en) and
+[?lang=sq](https://albi-zeqollari.github.io/dental-template/?lang=sq))
+
 A one-page site, built with React, Vite and TypeScript, for dental clinics that treat
 foreign (mainly Italian) patients. It is in Italian, English and Albanian, and
 every contact button goes to WhatsApp. It has no backend and stores no data.
@@ -48,9 +52,13 @@ Add `?lang=it|en|sq` to a URL to force a language.
 
 ## Deploy
 
-`npm run build`, then upload `dist/` to any static host: Cloudflare Pages,
-Netlify or Vercel. All have free tiers and EU edge locations. Build
-command: `npm run build`; output directory: `dist`.
+The demo deploys to GitHub Pages on every push to `main`
+(`.github/workflows/deploy.yml`).
+
+For a client, `npm run build` and upload `dist/` to any static host:
+Cloudflare Pages, Netlify or Vercel. All have free tiers and EU edge
+locations. Build command: `npm run build`; output directory: `dist`. The
+build uses relative paths, so it works on a custom domain or a sub-path.
 
 ## Privacy by design (selling point)
 
